@@ -92,8 +92,7 @@ class DBUpdater:
             pages = min(int(lastpage), pages_to_fetch)
             for page in range(1, pages + 1):
                 pg_url = '{}&page={}'.format(url, page)
-                df = df.append(pd.read_html(requests.get(pg_url,
-                    headers={'User-agent': 'Mozilla/5.0'}).text)[0])                                          
+                df = df.append(pd.read_html(requests.get(pg_url,headers={'User-agent': 'Mozilla/5.0'}).text)[0])                                          
                 tmnow = datetime.now().strftime('%Y-%m-%d %H:%M')
                 print('[{}] {} ({}) : {:04d}/{:04d} pages are downloading...'.
                     format(tmnow, company, code, page, pages), end="\r")
